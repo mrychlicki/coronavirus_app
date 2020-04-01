@@ -27,7 +27,7 @@ namespace Coronavirus_App
 
         private void show(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Dane mogą różnić się od stanu faktycznego ponieważ, są pobierane ze strony WHO, gdzie aktualizacja nowych przypadków odbywa się raz dziennie!");
+            MessageBox.Show("Dane mogą różnić się od stanu faktycznego, ponieważ są pobierane ze strony WHO, gdzie aktualizacja nowych przypadków odbywa się raz dziennie!");
             string country_ = countries.SelectedValue.ToString().Split(':')[1];
             GetData.ChangeToEnglish(country_);
             GetData.GetDataApi();
