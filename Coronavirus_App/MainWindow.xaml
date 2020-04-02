@@ -6,10 +6,40 @@
         xmlns:local="clr-namespace:Coronavirus_App"
         mc:Ignorable="d"
         Title="Sars-CoV-2 Statystyka" Height="454" Width="416">
-    <Grid>
-        <Label Content="Kraj" HorizontalAlignment="Left" Margin="80,89,0,0" VerticalAlignment="Top" Width="145"/>
-        <Label Content="" HorizontalAlignment="Left" Margin="296,138,0,0" VerticalAlignment="Top" Width="141" Name="confirm"/>
-        <Button Content="Pobierz dane" HorizontalAlignment="Center" Margin="0,296,0,0" VerticalAlignment="Top" Click="show"/>
+    <Window.Resources>
+        <Style TargetType="Button" x:Key="btn_1">
+            <Setter Property="Background" Value="AliceBlue"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="White"/>
+        </Style>
+        <Style TargetType="Label" x:Key="label_confirmed">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Foreground" Value="Red"/>
+        </Style>
+        <Style TargetType="Label" x:Key="label_death">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+        <Style TargetType="Label" x:Key="label_recovered">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Foreground" Value="#FF2ED32E"/>
+        </Style>
+        <Style TargetType="Label" x:Key="label">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        <Style TargetType="Grid" x:Key="grid">
+            <Setter Property="Background" Value="#FF597272"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Style="{StaticResource grid}">
+
+        <Label Content="Kraj" HorizontalAlignment="Left" Margin="80,89,0,0" VerticalAlignment="Top" Width="145" Style="{StaticResource label}"/>
+        <Label Content="" HorizontalAlignment="Left" Margin="275,148,0,0" VerticalAlignment="Top" Width="141" Name="confirm" Style="{StaticResource label_confirmed}"/>
+        <Button Content="Pobierz dane" HorizontalAlignment="Center" Margin="0,296,0,0" VerticalAlignment="Top" Click="show" Style="{StaticResource btn_1 }" Height="40" Width="207"/>
 
 
         <ComboBox HorizontalAlignment="Left" Margin="168,91,0,0" VerticalAlignment="Top" Width="120" Name="countries">
@@ -21,10 +51,12 @@
             <ComboBoxItem>Hiszpania</ComboBoxItem>
             <ComboBoxItem>Portugalia</ComboBoxItem>
         </ComboBox>
-        <Label Content="Liczba potwierdzonych przypadków: " HorizontalAlignment="Left" Margin="80,143,0,0" VerticalAlignment="Top"/>
-        <Label Content="Liczba śmierci" HorizontalAlignment="Left" Margin="80,174,0,0" VerticalAlignment="Top"/>
-        <Label Content="" HorizontalAlignment="Left" Margin="296,174,0,0" VerticalAlignment="Top" Width="104" Name="death"/>
-        <Label Content="Liczba potwierdzonych wyzdrowień" HorizontalAlignment="Left" Margin="80,212,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.396,0.107" Width="204"/>
-        <Label Content="" HorizontalAlignment="Left" Margin="296,212,0,0" VerticalAlignment="Top" Width="104" Name="recovered"/>
+        <Label Content="Liczba potwierdzonych przypadków: " HorizontalAlignment="Left" Margin="10,148,0,0" VerticalAlignment="Top" Style="{StaticResource label}" />
+        <Label Content="Liczba śmierci:" HorizontalAlignment="Left" Margin="10,183,0,0" VerticalAlignment="Top"  Style="{StaticResource label}"/>
+        <Label Content="" HorizontalAlignment="Left" Margin="275,179,0,0" VerticalAlignment="Top" Width="104" Name="death" Style="{StaticResource label_death}"/>
+        <Label Content="Liczba potwierdzonych wyzdrowień:" HorizontalAlignment="Left" Margin="10,214,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.396,0.107" Width="242"  Style="{StaticResource label}"/>
+        <Label Content="" HorizontalAlignment="Left" Margin="275,214,0,0" VerticalAlignment="Top" Width="104" Name="recovered" Style="{StaticResource label_recovered}"/>
     </Grid>
+
+
 </Window>
