@@ -26,8 +26,8 @@ namespace Coronavirus_App
             request.AddHeader("x-rapidapi-key", "d537f4674dmsh8eaba61cb9c9560p1d5a1ejsn85a89d3f2136");
             IRestResponse response = client.Execute(request);
             string data = response.Content;
-            dynamic daraParse = JObject.Parse(data);
-            var covid19Stats = daraParse.data.covid19Stats;
+            dynamic dataParse = JObject.Parse(data);
+            var covid19Stats = dataParse.data.covid19Stats;
             Confirmed = covid19Stats[0].confirmed;
             Deaths = covid19Stats[0].deaths;
             Recovered = covid19Stats[0].recovered;
