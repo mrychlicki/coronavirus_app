@@ -34,8 +34,8 @@ namespace Coronavirus_App
             //MessageBox.Show(GetData.Confirmed);
             //MessageBox.Show(GetData.Country);
             confirm.Content = GetData.Confirmed;
-            recovered.Content = GetData.recovered;
-            death.Content = GetData.deaths;
+            recovered.Content = GetData.Recovered;
+            death.Content = GetData.Deaths;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using RestSharp;
+﻿using Newtonsoft.Json.Linq;
+using RestSharp;
 using RestSharp.Serialization.Xml;
 using System;
 using System.Collections.Generic;
@@ -11,8 +12,8 @@ namespace Coronavirus_App
         public static string Country = "";
 
         public static string Confirmed = "";
-        public static string deaths = "";
-        public static string recovered = "";
+        public static string Deaths = "";
+        public static string Recovered = "";
 
 
         public static void GetDataApi()
@@ -24,27 +25,12 @@ namespace Coronavirus_App
             request.AddHeader("x-rapidapi-host", "covid-19-coronavirus-statistics.p.rapidapi.com");
             request.AddHeader("x-rapidapi-key", "d537f4674dmsh8eaba61cb9c9560p1d5a1ejsn85a89d3f2136");
             IRestResponse response = client.Execute(request);
-            client.UseDotNetXmlSerializer();
-
-            string[] test = response.Content.Split(',');
-
-            foreach (string item in test)
-            {
-                if (item.Contains("confirmed"))
-                {
-                    Confirmed = item.Split(":")[1];
-                }
-                if (item.Contains("deaths"))
-                {
-                    deaths= item.Split(":")[1];
-                }
-                if (item.Contains("recovered"))
-                {
-                    recovered= item.Split(":")[1].Substring(0,item.Split(":")[1].Length-4);
-                }
-
-
-            }
+            string data = response.Content;
+            dynamic daraParse = JObject.Parse(data);
+            var covid19Stats = daraParse.data.covid19Stats;
+            Confirmed = covid19Stats[0].confirmed;
+            Deaths = covid19Stats[0].deaths;
+            Recovered = covid19Stats[0].recovered;
         }
 
         public static void ChangeToEnglish(string country_)
